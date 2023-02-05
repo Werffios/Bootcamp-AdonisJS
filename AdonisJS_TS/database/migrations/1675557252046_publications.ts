@@ -5,12 +5,12 @@ export default class extends BaseSchema {
 
   public async up () {
     this.schema.createTable(this.tableName, (table) => {
-      table.integer('Codigo_Publicacion').primary().unsigned()
-      table.string('Titulo', 100).notNullable()
-      table.string('Cuerpo', 100).notNullable()
-      table.integer('Codigo_Usuario').unsigned().unique().index('Codigo_Usuario_Publicacion')
-      table.foreign('Codigo_Usuario').references('users.Codigo_Usuario').onDelete('cascade')
-
+      table.integer('codigo_publicacion').primary().unsigned()
+      table.string('titulo', 100).notNullable()
+      table.string('cuerpo', 100).notNullable()
+      table.integer('codigo_usuario').unsigned().index('codigo_usuario_publicacion')
+      table.foreign('codigo_usuario').references('users.codigo_usuario').onDelete('cascade')
+     
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
        */
