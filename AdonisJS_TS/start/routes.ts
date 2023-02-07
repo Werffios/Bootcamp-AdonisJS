@@ -27,6 +27,8 @@ Route.get('/', async () => {
 Route.group(() =>
 {
   Route.get('/listarGrupo', 'GroupsController.getGrupo')
+  Route.get('/listarPerfil', 'PerfilsController.getPerfil')
+  Route.get('/listarUsuario', 'UsersController.getUser')
 
   Route.post('/crearGrupo', 'GroupsController.setNewGroup')
 })

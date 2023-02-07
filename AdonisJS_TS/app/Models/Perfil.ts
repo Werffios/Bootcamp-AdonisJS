@@ -3,7 +3,13 @@ import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
 
 export default class Perfil extends BaseModel {
   @column({ isPrimary: true })
-  public id: number
+  public codigo_perfil: number
+
+  @column()
+  public nombre_perfil: string
+
+  @column.dateTime()
+  public fecha_creacion: DateTime
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
