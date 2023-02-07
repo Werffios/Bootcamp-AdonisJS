@@ -15,7 +15,7 @@ export default class GroupsController
       const codigoGrupo = await this.getValidarGrupoExistente(dataGroup.codigo_grupo)
       if (codigoGrupo===0)
       {
-        await Group.create(dataGroup)
+        await Group.create(dataGroup as Partial<Group>)
         response.status(200).json({ msg: 'Grupo creado correctamente' })
       } else {
         response.status(400).json({ msg: 'El grupo ya existe', codigoGrupo })
@@ -27,10 +27,10 @@ export default class GroupsController
     }
   }
   public async getValidarGrupoExistente(codigo_Grupo: Number) :Promise<Number>
-    {
-      const total = await Group.query().where({"codigo_grupo":codigo_Grupo}).count('*').from('groups')
-      console.log(total)
-      return parseInt(total[0]['count(*)'])
-    }
+  {
+    const total = await Group.query().where({"codigo_grupo":codigo_Grupo}).count('*').from('groups')
+    console.log(total)
+    return total[0]['count(*)'] || 0
+  }
 
 }
