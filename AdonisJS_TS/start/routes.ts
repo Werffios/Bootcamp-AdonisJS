@@ -27,4 +27,6 @@ Route.get('/', async () => {
 Route.group(() =>
 {
   Route.get('/listarGrupo', 'GroupsController.getGrupo')
+
+  Route.post('/crearGrupo', 'GroupsController.setNewGroup')
 })

@@ -3,10 +3,10 @@ import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
 
 export default class Group extends BaseModel {
   @column({ isPrimary: true })
-  public Codigo_Grupo: number
+  public codigo_grupo: number
 
   @column()
-  public Nombre_Grupo: string
+  public nombre_grupo: string
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
