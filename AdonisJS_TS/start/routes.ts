@@ -29,6 +29,12 @@ Route.group(() =>
   Route.get('/listarGrupo', 'GroupsController.getGrupo')
   Route.get('/listarPerfil', 'PerfilsController.getPerfil')
   Route.get('/listarUsuario', 'UsersController.getUser')
+  Route.get('/listarPublicaciones', 'PublicationsController.getPublication')
+  Route.get('/listarUsuario-Grupo', 'UserGroupsController.getUserGroup')
 
   Route.post('/crearGrupo', 'GroupsController.setNewGroup')
+  Route.post('/crearPerfil', 'PerfilsController.setNewPerfil')
+  Route.post('/crearUsuario', 'UsersController.setNewUser')
+  Route.post('/crearPublicaciones', 'PublicationsController.setNewPublication')
+  Route.post('/crearUsuario-Grupo', 'UserGroupsController.setNewUserGroup')
 })
