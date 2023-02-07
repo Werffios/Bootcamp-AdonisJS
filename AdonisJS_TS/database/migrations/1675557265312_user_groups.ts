@@ -1,16 +1,15 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 
-export default class extends BaseSchema {
+export default class extends BaseSchema{
   protected tableName = 'user_groups'
 
   public async up () {
     this.schema.createTable(this.tableName, (table) => {
-      table.integer('codigo_usuario').unsigned().index('codigo_usuario')
-      table.integer('codigo_grupo').unsigned().index('codigo_grupo')
+      table.increments('id')
+      table.integer('codigo_usuario').unsigned().references('codigo_usuario').inTable('users').onDelete('cascade')
+      table.integer('codigo_grupo').unsigned().references('codigo_grupo').inTable('groups').onDelete('cascade')
       table.date('fecha_inicio').notNullable()
-      table.foreign('codigo_usuario').references('users.codigo_usuario').onDelete('cascade')
-      table.foreign('codigo_grupo').references('groups.codigo_grupo').onDelete('cascade')
-
+      table.unique(['codigo_usuario', 'codigo_grupo'])
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
        */
@@ -18,8 +17,7 @@ export default class extends BaseSchema {
       table.timestamp('updated_at', { useTz: true })
     })
   }
-
-  public async down () {
-    this.schema.dropTable(this.tableName)
-  }
+    public async down () {
+      this.schema.dropTable(this.tableName)
+    }
 }

@@ -6,6 +6,9 @@ export default class Publication extends BaseModel {
   public codigo_publicacion: number
 
   @column()
+  codigo_usuario: number
+
+  @column()
   public titulo: string
 
   @column()

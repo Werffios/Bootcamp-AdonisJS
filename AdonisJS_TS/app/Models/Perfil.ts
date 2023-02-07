@@ -11,6 +11,9 @@ export default class Perfil extends BaseModel {
   @column.dateTime()
   public fecha_creacion: DateTime
 
+  @column()
+  codigo_usuario: number
+
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
 

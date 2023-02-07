@@ -12,14 +12,12 @@ export default class GroupsController
   {
     try {
       const dataGroup = request.only(['codigo_grupo', 'nombre_grupo'])
-      const codigoGrupo = dataGroup.codigo_grupo
       await Group.create(dataGroup)
-      response.status(200).json({ msg: 'Grupo creado correctamente' })
+      response.status(201).json({ msg: 'Grupo creado correctamente' })
     } catch (error) {
       if (error.code === '23505')
       {
         const dataGroup = request.only(['codigo_grupo', 'nombre_grupo'])
-        const codigoGrupo = dataGroup.codigo_grupo
         response.status(400).json({ msg: 'El grupo ya existe', dataGroup})
       }
       else
